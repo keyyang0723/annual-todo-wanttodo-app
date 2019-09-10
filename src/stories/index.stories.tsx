@@ -3,8 +3,8 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 
-import Button from "../button";
+import {SimpleButton, interfaceProps}from "../button";
 
 storiesOf("Button", module).add("with text", () => (
-  <Button onClick={action("clicked")}>Hello Button</Button>
+  <SimpleButton onClick={action("clicked")} main={""}>Hello Button</SimpleButton>
 ));

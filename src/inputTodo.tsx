@@ -1,7 +1,9 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 
-const Button = styled.button`
+const Input = styled.input.attrs({
+    type: 'text',
+})`
   color: red;
   background-color: ${(props: interfaceProps) => props.main};
 `
@@ -9,19 +11,18 @@ interface interfaceTheme {
   main: string,
 }
 
-Button.defaultProps = {
+Input.defaultProps = {
     main: "#000fff"
 }
 
 interface interfaceProps {
-  onClick: () => void;
   main: string;
 }
 
-const SimpleButton: FC<interfaceProps> = (props: interfaceProps) => {
+const InputTodo: FC<interfaceProps> = (props: interfaceProps) => {
   return(
-  <Button {...props}>Done</Button>
+  <Input {...props}/>
   )
 }
 
-export { SimpleButton, interfaceProps};
+export { InputTodo };
