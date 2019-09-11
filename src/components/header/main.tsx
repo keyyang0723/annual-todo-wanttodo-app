@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from "styled-components";
 import HeaderLogo from './logo'
 
-const HeaderMain = styled.div`
+const HeaderWrapper = styled.div`
     height : 50px;
     display: flex;
     align-items:center;
@@ -14,9 +14,9 @@ const HeaderMain = styled.div`
 
 const Header:React.FC = () => {
     return(
-        <HeaderMain>
+        <HeaderWrapper>
             <HeaderLogo />
-        </HeaderMain>)
+        </HeaderWrapper>)
 }
 
 export default Header

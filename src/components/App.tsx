@@ -2,6 +2,7 @@ import * as React from 'react'
 import { SimpleButton }  from '../button'
 import { InputTodo } from '../inputTodo'
 import Header from './header/main'
+import Main from './main/main'
 import BaseStyle from './baseStyle'
 
 const App:React.FC = () => {
@@ -9,13 +10,7 @@ const App:React.FC = () => {
         <React.Fragment>
             <BaseStyle />
             <Header />
-            <SimpleButton
-            onClick={ () => {console.log("test")}}
-            main={"#000fff"}
-            />
-            
-            <InputTodo 
-            />
+            <Main />
         </React.Fragment>)
 }
 
