@@ -10,9 +10,9 @@ export interface TodoProps {
 
 export const Todo:React.FC<TodoProps> = (props:TodoProps)=> {
     return(
-        <React.Fragment>
+        <div>
             <input type="text" value={props.title} onChange = {e => props.onChangeTitle(e.target.value)} placeholder="title"/>
             <input type="text" value={props.description} onChange = {e => props.onChangeDescription(e.target.value)} placeholder="description"/>
-        </React.Fragment>
+        </div>
     )
 }

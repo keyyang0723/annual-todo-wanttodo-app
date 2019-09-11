@@ -1,6 +1,4 @@
 import * as React from 'react'
-import { SimpleButton }  from '../button'
-import { InputTodo } from '../inputTodo'
 import Header from './header/main'
 import Main from './main/main'
 import BaseStyle from './baseStyle'

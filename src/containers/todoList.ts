@@ -1,16 +1,17 @@
-import { Action, TodoType, editTodoTitle,editTodoDescruption } from '../actions/action'
+import { Action, TodoType, editTodoTitle, editTodoDescruption, addTodo, todoCategory} from '../actions/action'
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { TodoList } from '../components/main/TodoList/todoList'
 import { TodoAppState } from '../reducers/todo'
 
-export type TodoListArr = {
-    todos: TodoType[]
+export type TodoListState = {
+    todos: TodoType[],
+    shwoMode: todoCategory,
+    isTodoList:Boolean
 }
 
 
 function mapStateToProps(state: TodoAppState){
-    console.log(state)
     return{
         TodoListArr: state.todos
     }
@@ -23,6 +24,9 @@ function mapDispatchToProps(dispatch:Dispatch<Action>){
         },
         onChangeDescription(description: string, index: number){
             dispatch(editTodoDescruption(index,description))
+        },
+        onClickAddButton(shwoMode: todoCategory,isTodoList:boolean){
+            dispatch(addTodo(shwoMode, isTodoList))
         },
     }
 }

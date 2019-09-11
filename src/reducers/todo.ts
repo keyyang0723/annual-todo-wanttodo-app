@@ -1,12 +1,13 @@
 import { Action,TodoType, todoCategory } from '../actions/action';
 
 export interface TodoAppState {
+    index: number;
     todos: TodoType[];
 }
 
 
 const initTodo:TodoType = {
-        index:1,
+        index:0,
         title: "",
         description : "",
         todoCategory: todoCategory.Daily,
@@ -16,9 +17,9 @@ const initTodo:TodoType = {
 
 
 export const initState: TodoAppState = {
+    index:1,
     todos: [
-       initTodo,
-       initTodo
+        initTodo
     ]
 }
 
@@ -27,7 +28,12 @@ export function todoApp(state: TodoAppState = initState, action: Action){
         case 'ADD_TODO':
             return Object.assign({},state, {
                 todos: <TodoType[]>[
-                    ...state.todos,{}]
+                    ...state.todos,{
+                        ...initTodo,
+                        index:state.index++,
+                        todoCategory: action.todoCategory,
+                        isTodo: action.isTodo
+                    }]
             });
         case 'DELETE_TODO':
             return Object.assign({},state, {
@@ -35,12 +41,13 @@ export function todoApp(state: TodoAppState = initState, action: Action){
                     ...state.todos.slice(0,action.index)]
             });
         case 'EDIT_TODO_TITLE':
+            console.log(action.title)
             return Object.assign({},state, {
                 todos: <TodoType[]>[
                     ...state.todos.slice(0,action.index),
                     {
                         ...state.todos[action.index],
-                        title: state.todos[action.index].title,
+                        title: action.title,
                     },
                     ...state.todos.slice(action.index + 1)
                 ]
@@ -51,7 +58,7 @@ export function todoApp(state: TodoAppState = initState, action: Action){
                     ...state.todos.slice(0,action.index),
                     {
                         ...state.todos[action.index],
-                        description: state.todos[action.index].description,
+                        description: action.description,
                     },
                     ...state.todos.slice(action.index + 1)
                 ]
