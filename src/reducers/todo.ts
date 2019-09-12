@@ -11,7 +11,8 @@ const initTodo:TodoType = {
         title: "",
         description : "",
         todoCategory: todoCategory.Daily,
-        isTodo: true
+        isTodo: true,
+        deleteFlg: false
     }
     
 
@@ -38,32 +39,57 @@ export function todoApp(state: TodoAppState = initState, action: Action){
         case 'DELETE_TODO':
             return Object.assign({},state, {
                 todos: <TodoType[]>[
-                    ...state.todos.slice(0,action.index)]
+                    ...state.todos.filter((todo:TodoType) => 
+                        todo.deleteFlg != true 
+                        || todo.todoCategory != action.todoCategory 
+                        || todo.isTodo != action.isTodo 
+                        )
+                        ]
             });
         case 'EDIT_TODO_TITLE':
-            console.log(action.title)
+            let index = GetIndexNumber(action.index,state.todos)
             return Object.assign({},state, {
                 todos: <TodoType[]>[
-                    ...state.todos.slice(0,action.index),
+                    ...state.todos.slice(0,index),
                     {
-                        ...state.todos[action.index],
+                        ...state.todos[index],
                         title: action.title,
                     },
-                    ...state.todos.slice(action.index + 1)
+                    ...state.todos.slice(index + 1)
                 ]
             });
         case 'EDIT_TODO_DESCRIPTION':
+            index = GetIndexNumber(action.index,state.todos)
             return Object.assign({},state, {
                 todos: <TodoType[]>[
-                    ...state.todos.slice(0,action.index),
+                    ...state.todos.slice(0,index),
                     {
-                        ...state.todos[action.index],
+                        ...state.todos[index],
                         description: action.description,
                     },
-                    ...state.todos.slice(action.index + 1)
+                    ...state.todos.slice(index + 1)
                 ]
             });
+        case 'CHANGE_DETELE_FLG':
+            index = GetIndexNumber(action.index,state.todos)
+            return Object.assign({},state, {
+                todos: <TodoType[]>[
+                    ...state.todos.slice(0,index),
+                    {
+                        ...state.todos[index],
+                        deleteFlg: action.deleteFlg,
+                    },
+                    ...state.todos.slice(index + 1)
+                ]
+            });
+            
         default:
             return state;
     }
+}
+
+function GetIndexNumber(id:number,todos:TodoType[]):number {
+    let ret = -1;
+    todos.map((x:TodoType,index:number) => {if(x.index == id)ret = index})
+    return ret;
 }

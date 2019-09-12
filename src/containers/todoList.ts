@@ -1,4 +1,13 @@
-import { Action, TodoType, editTodoTitle, editTodoDescruption, addTodo, todoCategory} from '../actions/action'
+import { 
+    Action, 
+    TodoType, 
+    editTodoTitle, 
+    editTodoDescruption, 
+    addTodo, 
+    deleteTodo, 
+    todoCategory ,
+    changeDeleteFlg
+} from '../actions/action'
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { TodoList } from '../components/main/TodoList/todoList'
@@ -28,6 +37,12 @@ function mapDispatchToProps(dispatch:Dispatch<Action>){
         onClickAddButton(shwoMode: todoCategory,isTodoList:boolean){
             dispatch(addTodo(shwoMode, isTodoList))
         },
+        onClickDeleteButton(shwoMode: todoCategory,isTodoList:boolean){
+            dispatch(deleteTodo(shwoMode, isTodoList))
+        },
+        changedDeleteFlg(deleteFlg:boolean, index:number){
+            dispatch(changeDeleteFlg(index,deleteFlg))
+        }
     }
 }
 

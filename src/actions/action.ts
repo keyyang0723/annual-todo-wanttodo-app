@@ -4,6 +4,7 @@ export type TodoType = {
     description: string;
     todoCategory: todoCategory;
     isTodo: boolean;
+    deleteFlg:boolean;
 }
 export enum todoCategory {
     Annual,
@@ -19,7 +20,8 @@ export type Action =
     isTodo: boolean;
 } | {
     type: 'DELETE_TODO',
-    index: number
+    todoCategory: todoCategory;
+    isTodo: boolean;
 } | {
     type: 'EDIT_TODO_TITLE',
     index: number,
@@ -29,6 +31,11 @@ export type Action =
     type: 'EDIT_TODO_DESCRIPTION',
     index: number,
     description: string
+} | 
+{
+    type: 'CHANGE_DETELE_FLG',
+    index: number,
+    deleteFlg: boolean
 }
 
 export function addTodo(todoCategory: todoCategory,isTodo: boolean): Action {
@@ -39,10 +46,11 @@ export function addTodo(todoCategory: todoCategory,isTodo: boolean): Action {
     };
 }
 
-export function deleteTodo(index:number): Action {
+export function deleteTodo(todoCategory: todoCategory,isTodo: boolean): Action {
     return{
         type: 'DELETE_TODO',
-        index
+        todoCategory,
+        isTodo
     };
 }
 
@@ -59,5 +67,13 @@ export function editTodoDescruption(index:number, description:string): Action{
         type: 'EDIT_TODO_DESCRIPTION',
         index,
         description
+    }
+}
+
+export function changeDeleteFlg(index:number, deleteFlg:boolean): Action{
+    return{
+        type: 'CHANGE_DETELE_FLG',
+        index,
+        deleteFlg
     }
 }

@@ -6,8 +6,10 @@ import styled from 'styled-components';
 export interface TodoListProps {
     TodoListArr: TodoType[]
     onChangeTitle: (value:string, index:number) => void;
-    onChangeDescription: (value:string, index:number) => void;
-    onClickAddButton: (shwoMode: todoCategory,isTodoList:boolean) => void;
+    onChangeDescription: (value: string, index: number) => void;
+    onClickAddButton: (shwoMode: todoCategory, isTodoList: boolean) => void;
+    onClickDeleteButton: (shwoMode: todoCategory, isTodoList: boolean) => void;
+    changedDeleteFlg: (deleteFlg: boolean, index: number) => void;
     showMode: todoCategory,
     isTodoList:boolean
 }
@@ -27,17 +29,26 @@ export const TodoList:React.FC<TodoListProps> = (props: TodoListProps) => {
             console.log(props.showMode)
             if((props.showMode == todoCategory.ALL || todo.todoCategory == props.showMode) && todo.isTodo == props.isTodoList){
             return(
-                <Todo　
-                {...todo}
-                key = { index }
-                onChangeTitle = { (title) => props.onChangeTitle(title,todo.index)}
-                onChangeDescription = { (description) => props.onChangeDescription(description,todo.index)}
-                />
+                <div>
+                {(() => {
+                    if(props.showMode != todoCategory.ALL) return (
+                        <input type="checkbox" checked={todo.deleteFlg} onChange = {() => props.changedDeleteFlg(!todo.deleteFlg,todo.index)} />
+                    )})()}
+                        
+                    <Todo　
+                    {...todo}
+                    key = { index }
+                    onChangeTitle = { (title) => props.onChangeTitle(title,todo.index)}
+                    onChangeDescription = { (description) => props.onChangeDescription(description,todo.index)}
+                    />
+                </div>
             )}})}
-            // Add Button
             {(() => {
                 if(props.showMode != todoCategory.ALL) return (
-                <button onClick = { () => props.onClickAddButton(props.showMode,props.isTodoList)} > + </button>
+                <React.Fragment>
+                    <button onClick = { () => props.onClickAddButton(props.showMode,props.isTodoList)} > Add </button>
+                    <button onClick = { () => props.onClickDeleteButton(props.showMode,props.isTodoList)} > Delete </button>
+                </React.Fragment>
                 )
                 
             })()}
