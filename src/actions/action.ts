@@ -9,6 +9,7 @@ export type TodoType = {
 export enum todoCategory {
     Annual,
     Monthly,
+    Weekly,
     Daily,
     ALL
 }

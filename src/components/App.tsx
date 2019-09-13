@@ -2,14 +2,21 @@ import * as React from 'react'
 import Header from './header/main'
 import Main from './main/main'
 import BaseStyle from './baseStyle'
+import styled from 'styled-components'
+
+const AppWrapper = styled.div`
+    display:flex;
+    flex-direction:column;
+    height: 100%;
+`
 
 const App:React.FC = () => {
     return(
-        <React.Fragment>
+        <AppWrapper>
             <BaseStyle />
             <Header />
             <Main />
-        </React.Fragment>)
+        </AppWrapper>)
 }
 
 export default App

@@ -16,9 +16,19 @@ export interface TodoListProps {
 
 
 const TodoWrapper = styled.div`
-    width: 80%;
-    max-width: 1000px;
-    min-width;650px
+    height:92%;
+    overflow: auto;
+    border-top: solid 1px rgba(0,0,0,0.3);
+    border-bottom: solid 1px rgba(0,0,0,0.3);
+    position:relative;
+`
+
+const AddButton = styled.button`
+    position:absolute; top:80%; right:65px;
+`
+
+const DeleteButton = styled.button`
+    position:absolute; top:80%; right:10px;
 `
 
 
@@ -26,7 +36,6 @@ export const TodoList:React.FC<TodoListProps> = (props: TodoListProps) => {
     return(
         <TodoWrapper>
             {props.TodoListArr.map( (todo:TodoType ,index:number ) => {
-            console.log(props.showMode)
             if((props.showMode == todoCategory.ALL || todo.todoCategory == props.showMode) && todo.isTodo == props.isTodoList){
             return(
                 <div>
@@ -46,8 +55,8 @@ export const TodoList:React.FC<TodoListProps> = (props: TodoListProps) => {
             {(() => {
                 if(props.showMode != todoCategory.ALL) return (
                 <React.Fragment>
-                    <button onClick = { () => props.onClickAddButton(props.showMode,props.isTodoList)} > Add </button>
-                    <button onClick = { () => props.onClickDeleteButton(props.showMode,props.isTodoList)} > Delete </button>
+                    <AddButton onClick = { () => props.onClickAddButton(props.showMode,props.isTodoList)} > Add </AddButton>
+                    <DeleteButton onClick = { () => props.onClickDeleteButton(props.showMode,props.isTodoList)} > Delete </DeleteButton>
                 </React.Fragment>
                 )
                 

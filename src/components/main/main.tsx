@@ -1,35 +1,39 @@
 import * as React from 'react';
-import styled from "styled-components";
-import TodoList  from '../../containers/todoList';
-import { todoCategory } from '../../actions/action'
+import styled from 'styled-components';
 
+import TodoMain from './TodoList/main'
+import TitleBar, {TitlebarProps} from './titlebar'
+import Sidebar from './sidebar/main';
+
+const props:TitlebarProps = {
+    title :"Daily",
+}
 
 const MainWrapper = styled.div`
     width: 100%;
-    max-width: 1000px;
     margin:auto;
     display: flex;
-    align-items:center;
+    align-items:stretch;
+    flex-direction:row;
+    height: 95%;
+`
+
+const ContentsWrapper = styled.div`
+    display: flex;
+    flex-direction:column;
+    width: 100%;
 `
 
 const Main:React.FC = () => {
-
     return(
         <MainWrapper>
-            <TodoList 
-                showMode = { todoCategory.Daily }
-                isTodoList = {true}
-            />
-            <TodoList
-                showMode = { todoCategory.Monthly }
-                isTodoList = {true}
-            />
-                        <TodoList
-                showMode = { todoCategory.ALL }
-                isTodoList = {true}
-            />
+            <Sidebar />
+            <ContentsWrapper >
+                <TitleBar {...props}/>
+                <TodoMain />
+            </ContentsWrapper>
         </MainWrapper>
         )
 }
 
-export default Main;
+export default Main
