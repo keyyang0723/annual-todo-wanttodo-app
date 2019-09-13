@@ -6,7 +6,6 @@ import { todoCategory } from '../../../actions/action'
 
 const MainWrapper = styled.div`
     width: 100%;
-    max-width: 1000px;
     display: flex;
     align-items:start;
     flex-direction:column;

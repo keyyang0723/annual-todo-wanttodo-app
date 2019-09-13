@@ -3,6 +3,7 @@ import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import  SideBar from '../components/main/sidebar/main'
 import  { modeChangeButtonProps } from '../components/main/sidebar/modeChangeButton'
+import { TodoAppState } from '../reducers/todo'
 
 function mapStateToProps(state: modeChangeButtonProps){
     return{

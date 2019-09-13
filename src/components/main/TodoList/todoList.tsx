@@ -1,5 +1,6 @@
 import * as React from 'react';
-import  Todo  from '../../../containers/todo';
+// import  Todo  from '../../../containers/todo';
+import { Todo, TodoProps } from './todo';
 import { TodoType, todoCategory } from '../../../actions/action';
 import styled from 'styled-components';
 
@@ -36,9 +37,13 @@ export const TodoList:React.FC<TodoListProps> = (props: TodoListProps) => {
     return(
         <TodoWrapper>
             {props.TodoListArr.map( (todo:TodoType ,index:number ) => {
+            const changetodo = {
+                ...todo,
+                key:index
+            }
             if((props.showMode == todoCategory.ALL || todo.todoCategory == props.showMode) && todo.isTodo == props.isTodoList){
             return(
-                <div>
+                <div key = { index }>
                 {(() => {
                     if(props.showMode != todoCategory.ALL) return (
                         <input type="checkbox" checked={todo.deleteFlg} onChange = {() => props.changedDeleteFlg(!todo.deleteFlg,todo.index)} />
@@ -46,7 +51,6 @@ export const TodoList:React.FC<TodoListProps> = (props: TodoListProps) => {
                         
                     <Todo　
                     {...todo}
-                    key = { index }
                     onChangeTitle = { (title) => props.onChangeTitle(title,todo.index)}
                     onChangeDescription = { (description) => props.onChangeDescription(description,todo.index)}
                     />

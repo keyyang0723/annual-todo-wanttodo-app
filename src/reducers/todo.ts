@@ -83,9 +83,6 @@ export function todoApp(state: TodoAppState = initState, action: Action){
                 ]
             });
         case 'SHOW_MODE_CHANGE':
-            console.log(Object.assign({},state, {
-                showMode:action.mode
-            }))
             return Object.assign({},state, {
                 showMode:action.mode
             });
