@@ -3,6 +3,7 @@ import { Action,TodoType, todoCategory } from '../actions/action';
 export interface TodoAppState {
     index: number;
     todos: TodoType[];
+    showMode:todoCategory;
 }
 
 
@@ -19,9 +20,8 @@ const initTodo:TodoType = {
 
 export const initState: TodoAppState = {
     index:1,
-    todos: [
-        initTodo
-    ]
+    todos: [],
+    showMode:todoCategory.Daily
 }
 
 export function todoApp(state: TodoAppState = initState, action: Action){
@@ -82,7 +82,13 @@ export function todoApp(state: TodoAppState = initState, action: Action){
                     ...state.todos.slice(index + 1)
                 ]
             });
-            
+        case 'SHOW_MODE_CHANGE':
+            console.log(Object.assign({},state, {
+                showMode:action.mode
+            }))
+            return Object.assign({},state, {
+                showMode:action.mode
+            });
         default:
             return state;
     }

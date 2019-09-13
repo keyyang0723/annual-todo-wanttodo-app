@@ -1,6 +1,6 @@
 import * as React from 'react'
 import Header from './header/main'
-import Main from './main/main'
+import Main from '../containers/main'
 import BaseStyle from './baseStyle'
 import styled from 'styled-components'
 

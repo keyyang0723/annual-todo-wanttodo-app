@@ -9,4 +9,4 @@ function mapStateToProps(state: TodoType){
     }
 }
 
-export default connect(mapStateToProps,null)(Todo);
+export default connect(mapStateToProps)(Todo);

@@ -1,13 +1,11 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
+import { todoCategory } from '../../actions/action'
+
 import TodoMain from './TodoList/main'
 import TitleBar, {TitlebarProps} from './titlebar'
-import Sidebar from './sidebar/main';
-
-const props:TitlebarProps = {
-    title :"Daily",
-}
+import Sidebar from '../../containers/sidebar';
 
 const MainWrapper = styled.div`
     width: 100%;
@@ -24,13 +22,17 @@ const ContentsWrapper = styled.div`
     width: 100%;
 `
 
-const Main:React.FC = () => {
+export interface mainProps{
+    showMode: todoCategory
+}
+
+const Main:React.FC<mainProps> = (props:mainProps) => {
     return(
         <MainWrapper>
-            <Sidebar />
+            <Sidebar showMode={props.showMode}/>
             <ContentsWrapper >
-                <TitleBar {...props}/>
-                <TodoMain />
+                <TitleBar showMode={props.showMode}/>
+                <TodoMain showMode={props.showMode}/>
             </ContentsWrapper>
         </MainWrapper>
         )

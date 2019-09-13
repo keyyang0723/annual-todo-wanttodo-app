@@ -32,21 +32,25 @@ const TitleWrapper = styled.div`
     justify-content: center;
 `
 
-const ToDoListMain:React.FC = () => {
+interface TodoMainProps{
+    showMode:todoCategory
+}
+
+const ToDoListMain:React.FC<TodoMainProps> = (props:TodoMainProps) => {
 
     return(
         <MainWrapper>
             <TodoListWrapper>
                 <TitleWrapper><span>Todo</span></TitleWrapper>
                 <TodoList 
-                    showMode = { todoCategory.Daily }
+                    showMode = { props.showMode }
                     isTodoList = {true}
                 />
             </TodoListWrapper>
             <TodoListWrapper>
                 <TitleWrapper><span>WantTodo</span></TitleWrapper>
                 <TodoList
-                    showMode = { todoCategory.Daily }
+                    showMode = { props.showMode }
                     isTodoList = {false}
                 />
             </TodoListWrapper>

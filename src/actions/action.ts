@@ -37,6 +37,10 @@ export type Action =
     type: 'CHANGE_DETELE_FLG',
     index: number,
     deleteFlg: boolean
+} |
+{
+    type: 'SHOW_MODE_CHANGE'
+    mode: todoCategory,
 }
 
 export function addTodo(todoCategory: todoCategory,isTodo: boolean): Action {
@@ -76,5 +80,12 @@ export function changeDeleteFlg(index:number, deleteFlg:boolean): Action{
         type: 'CHANGE_DETELE_FLG',
         index,
         deleteFlg
+    }
+}
+
+export function changeMode(mode:todoCategory):Action{
+    return{
+        type: 'SHOW_MODE_CHANGE',
+        mode
     }
 }

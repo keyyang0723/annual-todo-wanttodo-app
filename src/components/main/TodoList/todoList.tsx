@@ -24,7 +24,7 @@ const TodoWrapper = styled.div`
 `
 
 const AddButton = styled.button`
-    position:absolute; top:80%; right:65px;
+    position:absolute; top:80%; right:47px;
 `
 
 const DeleteButton = styled.button`
@@ -56,7 +56,7 @@ export const TodoList:React.FC<TodoListProps> = (props: TodoListProps) => {
                 if(props.showMode != todoCategory.ALL) return (
                 <React.Fragment>
                     <AddButton onClick = { () => props.onClickAddButton(props.showMode,props.isTodoList)} > Add </AddButton>
-                    <DeleteButton onClick = { () => props.onClickDeleteButton(props.showMode,props.isTodoList)} > Delete </DeleteButton>
+                    <DeleteButton onClick = { () => props.onClickDeleteButton(props.showMode,props.isTodoList)} > Del </DeleteButton>
                 </React.Fragment>
                 )
                 
