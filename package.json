@@ -26,6 +26,7 @@
   "homepage": "https://github.com/keyyang0723/annual-todo-wanttodo-app#readme",
   "dependencies": {
     "react": "^16.9.0",
+    "react-datetime-picker": "^2.7.1",
     "react-dom": "^16.9.0",
     "react-redux": "^7.1.1",
     "redux": "^4.0.4",

@@ -26,10 +26,18 @@ const TodoWrapper = styled.div`
 
 const AddButton = styled.button`
     position:absolute; top:80%; right:47px;
+    border-radius: 4px;
+    background-color:#ffa500;
+    opacity:0.8;
+    font-weight:bold;
 `
 
 const DeleteButton = styled.button`
     position:absolute; top:80%; right:10px;
+    border-radius: 4px;
+    background-color:#ffa500;
+    opacity:0.8;
+    font-weight:bold;
 `
 
 

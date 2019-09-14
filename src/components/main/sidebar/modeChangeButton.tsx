@@ -15,16 +15,21 @@ const Button = styled.span`
     font-weight:bold;
     color:white;
     background-color:#2a2a2a;
-     transition: 0.5s
+     transition: 0.1s
     
     border-radius:3px;
     margin :1px;
     
     display:block;
     text-align:center;
-       
+    
     
     ${((props: modeChangeButtonProps) => ( getBorder(props.modeChange,props.selectedMode) ))}
+    
+    &:active{
+        font-size:1.2rem;
+        box-shadow: -1px -1px 1px 1px #606060 inset;
+    }
 `
 const getBorder = (mode:todoCategory,selected:todoCategory) => {
     let ret:string = "order:0;";

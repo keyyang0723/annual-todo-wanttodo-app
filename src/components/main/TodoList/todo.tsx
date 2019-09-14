@@ -30,7 +30,7 @@ const TextBoxTitle = styled.input.attrs({
     cursor:pointer;
     width:15%;
     min-width:30px;
-    
+    font-weight:bold;
     border:none;
     outline: 0;
     &:focus {
@@ -38,6 +38,7 @@ const TextBoxTitle = styled.input.attrs({
         margin:0;
         cursor:text;
     }
+    
 `;
 
 const TextBoxDes = styled.input.attrs({
